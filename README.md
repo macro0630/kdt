@@ -14,6 +14,8 @@ https://www.anaconda.com/download
 
 ## 3. 아나콘다 프롬프트 실행
 
+윈도우즈에서 검색에 ana 입력하면, anaconda prompt 라는 앱 이 보이며, 이것을 실행하면 터미널이 실행된다. 
+
 ## 4. 파이썬 가상환경 만들기
 
 $conda create -n 가상환경이름 python=3.10
