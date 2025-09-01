@@ -3,6 +3,8 @@
 
 ---
 
+조건문과 반복문 실습 : https://www.notion.so/2614a24679c080759d46fa33ba8a41f8?source=copy_link
+
 파이썬 OOP 실습 문제 : https://juniper-snout-930.notion.site/OOP-2614a24679c0806e820cf0dde737b1d0?source=copy_link 
 
 데이터 포맷 : https://docs.google.com/presentation/d/1mI6JB3DCzwz5_Tts2M5L0nHP4D9RXC1tCx_OUwORqKQ/edit?usp=sharing 
