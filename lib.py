@@ -1,3 +1,5 @@
+import csv
+
 def read_csv_dicts(path, encoding='utf-8'):
     with open(path, 'r', encoding= encoding, newline="") as f :
         reader = csv.DictReader(f)
