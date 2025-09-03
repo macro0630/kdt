@@ -30,6 +30,16 @@ def parse_quotes(html, page_url) :
             if tag_els :
                 tags.append( t.get_text(strip=True) )
         results.append( {'quote' : text, 'author' : author , 'tags' : tags, 'source_url' : page_url } )
+
+        # 다음 페이지 링크 추출 (있을 수도 있고, 없을 수도 있다) 
+        next_link = soup.select_one("li.next > a")
+        next_url = None
+        if next_link and next_link.has_attr("href") :
+            from urllib.parse import urljoin
+            next_url = urljoin(page_url, next_link['href'])
+        
+    return results, next_url
+    
     return results
 
 html = fetch_html(BASE_URL)
