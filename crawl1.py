@@ -16,27 +16,28 @@ def parse_quotes(html, page_url) :
 
     # 한 개의 명언 블록 :
     for q in soup.select("div.quote") : 
-        text_el = q.select_one("span.text").strip("“”\"'")
+        text_el = q.select_one("span.text")
         author_el = q.select_one("small.author")
         tag_els = q.select("a.tag")
 
         if not text_el or not author_el :
             continue
 
-        text = text_el.get_text(strip=True)
+        text = text_el.get_text(strip=True).strip("“”\"'")
         author = author_el.get_text(strip= True)
         tags = []
         for t in tag_els : 
             if tag_els :
                 tags.append( t.get_text(strip=True) )
+        
         results.append( {'quote' : text, 'author' : author , 'tags' : tags, 'source_url' : page_url } )
 
-        # 다음 페이지 링크 추출 (있을 수도 있고, 없을 수도 있다) 
-        next_link = soup.select_one("li.next > a")
-        next_url = None
-        if next_link and next_link.has_attr("href") :
-            from urllib.parse import urljoin
-            next_url = urljoin(page_url, next_link['href'])
+    # 다음 페이지 링크 추출 (있을 수도 있고, 없을 수도 있다) 
+    next_link = soup.select_one("li.next > a")
+    next_url = None
+    if next_link and next_link.has_attr("href") :
+        from urllib.parse import urljoin
+        next_url = urljoin(page_url, next_link['href'])
         
     return results, next_url
     
