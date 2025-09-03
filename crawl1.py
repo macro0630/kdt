@@ -40,7 +40,5 @@ def parse_quotes(html, page_url) :
         
     return results, next_url
     
-    return results
-
 html = fetch_html(BASE_URL)
 parse_quotes(html, BASE_URL)
