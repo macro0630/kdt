@@ -64,3 +64,14 @@ def crawl_all(start_url) :
 # 아래 함수만 실행하면 동작한다.
 all_rows = crawl_all(BASE_URL)
 
+def save_csv(rows, path='quotes.csv') :
+    with open(path, 'w', newline='', encoding='utf-8') as f :
+        writer = csv.writer(f)
+        # csv 파일의 형식 : 첫번째 행은 컬럼의 이름이 와야한다. 
+        writer.writerow( ['quote', 'author', 'tags', 'source_url' ] )
+        for r in rows :
+            writer.writerow( [ r['quote'] , r['author'], ' | '.join( r['tags'] ) , r['source_url'] ] )
+
+# 변수에 있는 데이터를 파일로 저장한다. 
+save_csv(all_rows)
+
