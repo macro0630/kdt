@@ -14,7 +14,7 @@ def parse_quotes(html, page_url) :
 
     # 한 개의 명언 블록 :
     for q in soup.select("div.quote") : 
-        text_el = q.select_one("span.text")
+        text_el = q.select_one("span.text").strip("“”\"'")
         author_el = q.select_one("small.author")
         tag_els = q.select("a.tag")
 
