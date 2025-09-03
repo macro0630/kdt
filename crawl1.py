@@ -64,6 +64,7 @@ def crawl_all(start_url) :
 # 아래 함수만 실행하면 동작한다.
 all_rows = crawl_all(BASE_URL)
 
+# csv 형식으로 저장하는 함수 
 def save_csv(rows, path='quotes.csv') :
     with open(path, 'w', newline='', encoding='utf-8') as f :
         writer = csv.writer(f)
@@ -74,4 +75,20 @@ def save_csv(rows, path='quotes.csv') :
 
 # 변수에 있는 데이터를 파일로 저장한다. 
 save_csv(all_rows)
+
+
+# jsonl 형식으로 저장하는 함수
+def save_jsonl(rows, path='quotes.jsonl') :
+    with open(path, 'w', encoding='utf-8') as f :
+        for r in rows :
+            json.dump(r, f, ensure_ascii=False)
+            f.write('\n')
+            
+# 변수에 있는 데이터를 파일로 저장한다.
+save_jsonl(all_rows)
+
+
+
+
+
 
