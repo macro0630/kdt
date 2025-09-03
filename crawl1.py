@@ -1,3 +1,5 @@
+# pip install requests beautifulsoup4 selenium webdriver-manager
+
 import requests
 from bs4 import BeautifulSoup
 
