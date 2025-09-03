@@ -41,5 +41,26 @@ def parse_quotes(html, page_url) :
         
     return results, next_url
     
-html = fetch_html(BASE_URL)
-parse_quotes(html, BASE_URL)
+import time
+def crawl_all(start_url) :
+    url = start_url
+    all_rows = [] 
+    visited = set() # 순환 방지 
+
+    # 이미 방문한 url이 아니면 데이터를 가져온다. 
+    while url and url not in visited :
+        visited.add(url)
+        # 1. html코드를 문자열로 가져온다.
+        html = fetch_html(url)
+        # 2. 문자열에서 원하는 곳의 데이터를 가져온다. 
+        rows, next_url = parse_quotes(html, url)
+        all_rows.extend(rows)
+        # 3. 접속을 빠르게 연속적으로 하면 공격의심받으니까, 쉬었다가 처리하도록 한다.
+        time.sleep(1)
+        url = next_url
+    
+    return all_rows
+
+# 아래 함수만 실행하면 동작한다.
+all_rows = crawl_all(BASE_URL)
+
