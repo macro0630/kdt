@@ -3,6 +3,8 @@
 
 ---
 
+데이터분석 - 판다스에서 제공하는 다양한 함수들 : https://pandas.pydata.org/docs/reference/api/pandas.Series.str.upper.html
+
 csv, json, jsonl 파일 저장과 불러오기 : 파일_저장_불러오기.py 파일 참고
 
 차트에 한글 표시 : 차트_한글처리.py 파일 참고 
